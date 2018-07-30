@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Exit_flag.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="Snake.cs" />
     <Compile Include="VerticalLine.cs" />
