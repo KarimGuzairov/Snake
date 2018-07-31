@@ -18,15 +18,18 @@ namespace Snake
             VerticalLine Rightline = new VerticalLine(0, 29, 118, '+');
 
 
-            Upline.Drow();
-            Downline.Drow();
-            Leftline.Drow();
-            Rightline.Drow();
+            Upline.Draw();
+            Downline.Draw();
+            Leftline.Draw();
+            Rightline.Draw();
 
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT, false);
-            snake.Drow();
-            
+            snake.Draw();
+
+            FoodCreator foodCreator = new FoodCreator(117, 28, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
 
             while(true)
             {
