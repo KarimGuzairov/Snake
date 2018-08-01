@@ -11,28 +11,24 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-          
-            HorizontalLine Upline = new HorizontalLine(0, 118, 0, '+');
-            HorizontalLine Downline = new HorizontalLine(0, 118, 29, '+');
-            VerticalLine Leftline = new VerticalLine(0, 29, 0, '+');
-            VerticalLine Rightline = new VerticalLine(0, 29, 118, '+');
+            Point p = new Point(4, 5, '*'); // задание хвоста змейки
+            Snake snake = new Snake(p, 4, Direction.RIGHT, false); //Создание объекта змейка
+            snake.Draw(); // Рисование объекта змейка
 
+            FoodCreator foodCreator = new FoodCreator(117, 28, '$'); //Задание границ создания "еды" и значка для "еды"
+            Point food = foodCreator.CreateFood(); // Создание точки food
+            food.Draw(); //Рисование точки food
 
-            Upline.Draw();
-            Downline.Draw();
-            Leftline.Draw();
-            Rightline.Draw();
+            Walls walls = new Walls(117, 28); //Создание объекта walls
+            walls.Draw(); // рисование препятствий и рамок игрового поля
 
-            Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p, 4, Direction.RIGHT, false);
-            snake.Draw();
-
-            FoodCreator foodCreator = new FoodCreator(117, 28, '$');
-            Point food = foodCreator.CreateFood();
-            food.Draw();
-
-            while(true)
+            while(true) //бесконечный цикл, в котором происходит движение змейки, акты питания и проверка на столкновение с препятствиями
             {
+                if (walls.IsHit (snake) || snake.IsHitTail()) // значок || означает "ИЛИ".
+                {
+                    break; //Выход из цикла
+                }
+
                 if(Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
