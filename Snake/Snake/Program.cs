@@ -42,8 +42,15 @@ namespace Snake
                         break;
                     }
                 }
+
+                if(snake.Eat(food))
+                    {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                    }
                 Thread.Sleep(100);
                 snake.Move();
+
             }
         }
 
