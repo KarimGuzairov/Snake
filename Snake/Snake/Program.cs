@@ -23,6 +23,28 @@ namespace Snake
             Leftline.Draw();
             Rightline.Draw();
 
+
+            VerticalLine v1 = new VerticalLine(10, 15, 5, '@');
+            Draw(v1);
+
+            Point p = new Point(4, 5, '*');
+            Figure fSnake = new Snake(p, 4, Direction.RIGHT, false);
+            Draw(fSnake);
+            Snake snake = (Snake)fSnake;
+
+            HorizontalLine h1 = new HorizontalLine(5, 10, 6, '&');
+
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fSnake);
+            figures.Add(v1);
+            figures.Add(h1);
+
+            foreach(var f in figures)
+            {
+                f.Draw();
+            }
+
+            /*
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT, false);
             snake.Draw();
@@ -52,9 +74,16 @@ namespace Snake
                 snake.Move();
 
             }
+            */
+
+            Console.ReadLine();
         }
 
-        
+
+        static void Draw(Figure figure)
+        {
+            figure.Draw();
+        }
 
     }
 }
